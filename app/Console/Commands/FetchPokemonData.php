@@ -16,18 +16,24 @@ class FetchPokemonData extends Command
     {
         $this->info('Memulai fetch data Pokémon...');
 
+        // Agar tidak terlalu berat, hanya proses pokemon yang memiliki id 1 sampai 200
         for ($id = 1; $id <= 200; $id++) {
             $this->info("Fetching data for Pokémon ID: $id");
-
+            // Ambil data dari API
+            // Menggunakan Http Client dari Laravel
             $response = Http::get("https://pokeapi.co/api/v2/pokemon/{$id}");
 
+            // Cek jika response gagal
+            // Jika gagal, tampilkan pesan error dan lanjut ke pokemon berikutnya
             if ($response->failed()) {
                 $this->error("Gagal ambil data untuk ID: $id");
                 continue;
             }
 
+            // Ambil data JSON
             $data = $response->json();
 
+            /* Proses Penyaringan Data Pokemon yang Ingin Disimpan */
             // Filter: berat >= 100
             if ($data['weight'] < 100) {
                 $this->info("Skip Pokémon ID: $id karena berat < 100");
@@ -45,9 +51,11 @@ class FetchPokemonData extends Command
                 continue;
             }
 
+            // Simpan data Pokemon ke database
             $pokemon = Pokemon::updateOrCreate(
-                ['name' => $data['name']],
+                ['id' => $data['id']],
                 [
+                    'name' => $data['name'],
                     'base_experience' => $data['base_experience'],
                     'weight' => $data['weight'],
                     'stat_count' => $stat_count,
@@ -55,6 +63,7 @@ class FetchPokemonData extends Command
                 ]
             );
 
+            // Simpan ability ke database
             // Hapus ability lama
             $pokemon->abilities()->delete();
 

@@ -14,9 +14,9 @@ class PokemonController extends Controller
      */
     public function index()
     {
-        // Get all pokemons data from database
+        // Get seluruh data pokemon dari database
         $pokemons = $this->pokemonService->getAllPokemons();
-        // Pass the pokemons data to the view
+        // Passing data pokemon ke view
         return view('pokemon.index', ['pokemons' => $pokemons]);
     }
 

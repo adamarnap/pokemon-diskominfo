@@ -15,36 +15,6 @@
             </li>
             <!--end::Fullscreen Toggle-->
 
-            {{-- Start Language Mode --}}
-            <li class="nav-item dropdown me-2">
-                <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"
-                    id="bd-language" type="button" aria-expanded="false" data-bs-toggle="dropdown"
-                    data-bs-display="static">
-                    <span class="" id="bd-language-text">{{ strtoupper(Lang::locale()) }}</span>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="bd-language-text"
-                    style="--bs-dropdown-min-width: 8rem;">
-                    <li></li>
-                    <li>
-                        <a href="{{ route('change-locale', 'en') }}" class="dropdown-item d-flex align-items-center"
-                            aria-pressed="false">
-                            <span class="flag-icon flag-icon-us me-2"></span>
-                            English
-                            <i class="bi bi-check-lg ms-auto d-none"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('change-locale', 'id') }}" class="dropdown-item d-flex align-items-center"
-                            aria-pressed="false">
-                            <span class="flag-icon flag-icon-id me-2"></span>
-                            Indonesia
-                            <i class="bi bi-check-lg ms-auto d-none"></i>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-
-
             {{-- Start Theme Mode --}}
             <li class="nav-item dropdown">
                 <button class="btn btn-link nav-link py-2 px-0 px-lg-2 dropdown-toggle d-flex align-items-center"

@@ -1,3 +1,5 @@
+# Please readme for project installation guide.
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -72,7 +74,7 @@ php artisan migrate:fresh --seed
 ```
 
 ### Fetch Data Pokemon From API, and save to database
-Fetching data from Pokemon API *API used: https://pokeapi.co/api/v2/pokemon/* and saving it to the database. To fetch data and save it to the database, you need to run a command on the terminal, namely by running the following command:
+Fetching data from Pokemon API *API used: https://pokeapi.co/api/v2/pokemon/* and saving it to the database. To fetch data and save it to the database, you need to run a laravel command on the terminal, namely by running the following command:
 ```command
 php artisan fetch:pokemon
 ```
