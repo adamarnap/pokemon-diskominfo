@@ -14,7 +14,7 @@
                     <table id="pokemonTable" class="table table-striped display  nowrap" style="width:100%">
                         <thead>
                             <tr>
-                                <th align="center">No</th>
+                                <th align="center">ID</th>
                                 <th align="">Name</th>
                                 <th align="">Base Experience</th>
                                 <th align="">Weight</th>
@@ -26,7 +26,7 @@
                         <tbody>
                             @foreach ($pokemons as $pokemon)
                                 <tr>
-                                    <td align="center">{{ $loop->iteration }}</td>
+                                    <td align="center">{{ $pokemon->id }}</td>
                                     <td align="">{{ $pokemon->name }}</td>
                                     <td align="">{{ $pokemon->base_experience }}</td>
                                     <td align="">{{ $pokemon->weight }}</td>
