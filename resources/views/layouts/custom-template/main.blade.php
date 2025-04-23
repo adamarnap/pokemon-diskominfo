@@ -30,7 +30,7 @@
         {{-- App Wrapper --}}
         <div class="app-wrapper">
             @include('layouts.custom-template.topbar.topbar')
-            @include('layouts.custom-template.sidebar.sidebar')
+            {{-- @include('layouts.custom-template.sidebar.sidebar') --}}
 
             <main class="app-main">
                 <div class="app-content-header">

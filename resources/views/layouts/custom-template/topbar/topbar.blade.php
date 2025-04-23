@@ -3,23 +3,6 @@
 <nav class="app-header navbar navbar-expand bg-body">
     <!--begin::Container-->
     <div class="container-fluid">
-        <!--begin::Start Navbar Links-->
-        <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" data-lte-toggle="sidebar" href="#" role="button">
-                    <i class="bi bi-list"></i>
-                </a>
-            </li>
-            @php
-                $dashboard = array_filter($navs, function ($nav) {
-                    return $nav['name'] == 'Dashboard';
-                });
-                $dashboard = array_shift($dashboard);
-            @endphp
-            <li class="nav-item d-none d-md-block"><a href="{{ $dashboard['url'] }}" class="nav-link"><i
-                        class="fw-bold {{ $dashboard['icon'] }}"></i></a></li>
-        </ul>
-        <!--end::Start Navbar Links-->
 
         <!--begin::End Navbar Links-->
         <ul class="navbar-nav ms-auto">
@@ -102,59 +85,6 @@
             </li>
             {{-- End Theme Mode --}}
 
-            @php
-                if (Auth::user()->userProfile->profile_photo != null) {
-                    $profile_photo = URL::asset('storage/' . Auth::user()->userProfile->profile_photo);
-                } else {
-                    $profile_photo = URL::asset('storage/lte/assets/img/default_photo_profile.png');
-                }
-            @endphp
-
-            <!--begin::User Menu Dropdown-->
-            <li class="nav-item dropdown user-menu">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                    <img src="{{ $profile_photo }}"
-                        class="user-image rounded-circle shadow" alt="User Image" />
-                    <span class="d-none d-md-inline">{{ Auth::user()->name }}</span>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
-                    <!--begin::User Image-->
-                    <li class="user-header text-bg-primary">
-                        <img src="{{ $profile_photo }}"
-                            class="rounded-circle shadow" alt="User Image" />
-                        <p>
-                            {{ Auth::user()->name }}
-                            <small
-                                class="btn btn-rounded btn-outline-dark text-white mb-2">{{ Auth::user()->email }}</small>
-                            <small>Bergabung sejak, {{ Auth::user()->created_at->format('d M Y H:i:s') }}</small>
-                        </p>
-                    </li>
-                    <!--end::User Image-->
-                    <!--begin::Menu Body-->
-                    <li class="user-body">
-                        <!--begin::Row-->
-                        <div class="row">
-                            <div class="col-12 text-center">
-                                <small>{{ ucwords(Auth::user()->roles->pluck('name')->toArray()[0]) }}</small></div>
-                        </div>
-                        <!--end::Row-->
-                    </li>
-                    <!--end::Menu Body-->
-                    <!--begin::Menu Footer-->
-                    <li class="user-footer">
-                        <a href="{{ route('profile.edit') }}" class="btn btn-primary btn-flat"><i class="bi bi-person-bounding-box"></i> Profile</a>
-                        <a href="javascript:0, void;" class="btn btn-danger btn-flat float-end"
-                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="bi bi-box-arrow-left"></i> Logout</a>
-
-                        {{-- Logout Form --}}
-                        <form method="POST" action="{{ route('logout') }}" id="logout-form" style="display: none;">
-                            @csrf
-                        </form>
-                    </li>
-                    <!--end::Menu Footer-->
-                </ul>
-            </li>
-            <!--end::User Menu Dropdown-->
         </ul>
         <!--end::End Navbar Links-->
     </div>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Operator\HomeController;
+use App\Http\Controllers\PokemonController;
 use App\Http\Controllers\Settings\RoleController;
 use App\Http\Controllers\Settings\UserController;
 use App\Http\Controllers\Settings\ProfileController;
@@ -22,10 +23,15 @@ use App\Http\Controllers\Settings\PreferenceController;
 |
 */
 
+// Pokemon List
+Route::get('/pokemon', [PokemonController::class, 'index'])->name('pokemon');
+Route::redirect('/', '/pokemon');
+
+
 Route::middleware('auth', 'verified')->group(function () {
     /* ---- Dashboard */
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::redirect('/', '/dashboard');
+    // Route::redirect('/', '/dashboard');
 
     /* ---- My Profile */
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
